@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orlay Pay</title>
+
+<style>
+:root{
+  --primary:#2aa5c8;
+  --bg:#f8fafc;
+  --text:#0f172a;
+  --muted:#64748b;
+}
+
+body{
+  margin:0;
+  font-family:Inter,system-ui;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* ===== LAYOUT ===== */
+.container{
+  width:90%;
+  max-width:1100px;
+  margin:auto;
+}
+
+section{
+  padding:100px 0;
+}
+
+.hero{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+/* ===== TEXT ===== */
+h1{
+  font-size:48px;
+  line-height:1.1;
+}
+
+h2{
+  font-size:34px;
+}
+
+p{
+  color:var(--muted);
+  max-width:550px;
+}
+
+/* ===== BUTTON ===== */
+.btn{
+  background:var(--primary);
+  color:#fff;
+  padding:14px 26px;
+  border:none;
+  border-radius:10px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px rgba(42,165,200,.3);
+}
+
+/* ===== DASHBOARD ===== */
+.dashboard{
+  background:#fff;
+  border-radius:18px;
+  padding:20px;
+  box-shadow:0 30px 70px rgba(0,0,0,.08);
+}
+
+.kpis{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.kpi{
+  background:#f1f5f9;
+  padding:14px;
+  border-radius:10px;
+}
+
+.kpi h3{
+  margin:5px 0 0;
+}
+
+canvas{
+  width:100%;
+  height:160px;
+  margin-top:15px;
+}
+
+/* ===== CARDS ===== */
+.grid{
+  display:grid;
+  gap:20px;
+}
+
+.grid-3{
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+}
+
+.card{
+  background:#fff;
+  padding:22px;
+  border-radius:14px;
+  border:1px solid #eee;
+}
+
+/* ===== TAGS ===== */
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.tag{
+  background:#eef7fb;
+  padding:8px 14px;
+  border-radius:20px;
+}
+
+/* ===== FORM ===== */
+form{
+  display:grid;
+  gap:12px;
+  margin-top:20px;
+}
+
+input,textarea{
+  padding:12px;
+  border-radius:6px;
+  border:1px solid #ddd;
+}
+
+/* ===== STICKY CTA ===== */
+.sticky{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#fff;
+  padding:10px 20px;
+  border-radius:40px;
+  box-shadow:0 10px 30px rgba(0,0,0,.1);
+  display:flex;
+  gap:15px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .hero{
+    grid-template-columns:1fr;
+  }
+  h1{
+    font-size:34px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero container">
+  <div>
+    <div style="color:#2aa5c8;font-weight:600;font-size:13px;">
+      Continuità di vendita per eventi live ad alta affluenza
+    </div>
+
+    <h1>Il pubblico è già lì. Non perdere vendite nei momenti di picco.</h1>
+
+    <p>
+      Orlay Pay aiuta organizzatori, venue e operatori food & beverage a rendere ordine,
+      incasso e ritiro più fluidi: meno code, meno rinunce, più controllo operativo.
+    </p>
+
+    <button class="btn">Richiedi una demo</button>
+
+    <div style="font-size:13px;margin-top:10px;color:#64748b;">
+      Food & beverage · Hospitality · Aree VIP · Punti bar · Merchandising
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="dashboard">
+    <div style="display:flex;justify-content:space-between;">
+      <strong>Console operativa evento</strong>
+      <span style="font-size:12px;color:#64748b;">Live • Summer Festival 2026</span>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><small>Revenue (€)</small><h3 id="k1">0</h3></div>
+      <div class="kpi"><small>Orders</small><h3 id="k2">0</h3></div>
+      <div class="kpi"><small>Avg Ticket (€)</small><h3 id="k3">0</h3></div>
+      <div class="kpi"><small>Active Areas</small><h3 id="k4">0</h3></div>
+    </div>
+
+    <canvas id="chart"></canvas>
+
+    <div style="font-size:11px;color:#94a3b8;margin-top:8px;">
+      Real-time simulation based on peak demand windows
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="container">
+  <h2>La vendita si perde prima del pagamento.</h2>
+
+  <div class="grid grid-3">
+    <div class="card">Code e doppia attesa</div>
+    <div class="card">Staff sotto pressione</div>
+    <div class="card">Dati frammentati</div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="container">
+  <h2>Una regia unica per trasformare il servizio in ricavo.</h2>
+
+  <div class="grid grid-3">
+    <div class="card">Più ordini completati</div>
+    <div class="card">Più velocità al banco</div>
+    <div class="card">Più controllo per zona</div>
+  </div>
+</section>
+
+<!-- TARGET -->
+<section class="container">
+  <h2>Pensato per eventi dove ogni minuto conta.</h2>
+
+  <div class="tags">
+    <div class="tag">Festival</div>
+    <div class="tag">Concerti</div>
+    <div class="tag">Stadi</div>
+    <div class="tag">VIP</div>
+    <div class="tag">Food court</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="container">
+  <h2>Vuoi capire dove perdi vendite?</h2>
+
+  <form>
+    <input placeholder="Nome">
+    <input placeholder="Azienda">
+    <input placeholder="Tipo evento">
+    <input placeholder="Email">
+    <input placeholder="Telefono">
+    <textarea placeholder="Messaggio"></textarea>
+
+    <button class="btn">Richiedi demo</button>
+  </form>
+
+  <small>Ti ricontattiamo solo per valutare il progetto.</small>
+</section>
+
+<!-- STICKY -->
+<div class="sticky">
+  <span>Vuoi più vendite?</span>
+  <button class="btn">Demo</button>
+</div>
+
+<script>
+// KPI ANIMATION
+function format(id,val){
+  if(id==="k1") return "€"+val.toLocaleString();
+  if(id==="k3") return "€"+val;
+  return val;
+}
+
+function animate(id,end){
+  let i=0;
+  let el=document.getElementById(id);
+  let int=setInterval(()=>{
+    i+=Math.ceil(end/50);
+    if(i>=end){i=end;clearInterval(int);}
+    el.innerText=format(id,i);
+  },20);
+}
+
+animate("k1",37866);
+animate("k2",3000);
+animate("k3",19);
+animate("k4",8);
+
+// CHART
+const ctx=document.getElementById("chart").getContext("2d");
+let data=[5,10,25,40,60,45,70];
+
+function draw(){
+  ctx.beginPath();
+  ctx.moveTo(0,150-data[0]*2);
+
+  for(let i=1;i<data.length;i++){
+    let x=i*40;
+    let y=150-data[i]*2;
+    let prevX=(i-1)*40;
+    let prevY=150-data[i-1]*2;
+    let cpX=(prevX+x)/2;
+    ctx.quadraticCurveTo(prevX,prevY,cpX,y);
+  }
+
+  ctx.strokeStyle="#2aa5c8";
+  ctx.lineWidth=2;
+  ctx.stroke();
+}
+draw();
+</script>
+
+</body>
+</html>
